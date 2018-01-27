@@ -1,0 +1,21 @@
+{
+  "server" : {
+    "port" : 3000,
+    "nonSecurePathes" : ["/","/login", "/api/users/login"]
+  },
+  "database" : {
+    "host" : "localhost",
+    "port" : 10000,
+    "user" : "root",
+    "password" : "password"
+  },
+  "session" : {
+    "secret" : "verysecure",
+    "resave" : false,
+    "saveUninitialized" : true,
+    "cookie" : {
+      "secure" : false,
+      "expires" : 86400
+    }
+  }
+}

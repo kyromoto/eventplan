@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet/less" type="text/css" href="/client/less/app.less">
+
+  <script src="/lib/less/less.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header">
+      <h1>SSM Planungstool</h1>
+    </div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link job" href="#/job">Jobs</a></li>
+      <li class="nav-item"><a class="nav-link job-new" href="#/job/new">Neuer Job</a></li>
+      <li class="nav-item"><a class="nav-link job-edit" href="#/job/edit">Job bearbeiten</a></li>
+    </ul>
+  </header>
+  <main>
+      <!--<div id="page-home" class="page">
+        <div>
+          <form id="todo-list-form">
+            <h3>Todo Liste</h3>
+            <div id="content"></div>
+          </form>
+        </div>
+        <div>
+          <button type="button" id="button-delete-selected-todo">Delete selected</button>
+        </div>
+        <div>
+          <form id="add-todo-form">
+            <input type="text" name="todo" id="add-todo-form-input">
+            <button type="button" id="add-todo-form-submit">Add</button>
+          </firm>
+        </div>
+      </div>
+      <div id="page-detailed" class="page"><h3>Page 2</h3></div>-->
+    <div id="page-job" class="page-wrapper">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Datum</th>
+            <th>Job</th>
+            <th>Ort</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody id="job-list"></tbody>
+      </table>
+    </div>
+
+    <div id="page-job-new" class="page-wrapper"><h1>new: Hier fehlt noch die Seite!</h1></div>
+    <div id="page-job-edit" class="page-wrapper"><h1>edit: Hier fehlt noch die Seite!</h1></div>
+  </main>
+</div>
+
+
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/underscore/underscore-min.js"></script>
+<script src="/lib/handlebars/handlebars.min.js"></script>
+<script src="/lib/backbone/backbone-min.js"></script>
+<script src="/lib/stateman/stateman.min.js"></script>
+
+<!-- template script was here -->
+<script src="/client/js/router.js"></script>
+<script src="/client/js/app.js"></script>
+<script src="/client/js/job.js"></script>
+<!--<script src="/client/js/todo.js"></script>-->
+
+<script type="text/x-handlebars-template" id="template-job-list">
+  {{#each []}}
+  <tr>
+    <td>{{this.state}}</td>
+    <td>{{this.datum}}</td>
+    <td>{{this.job}}</td>
+    <td>{{this.ort}}</td>
+    <td>{{this.info}}</td>
+  </tr>
+  {{/each}}
+</script>
+
+<!--<script type="text/x-handlebars-template" id="todo-list-template">
+  <ul>
+    {{#each []}}
+    <li>
+      <input type="checkbox" name="id" value="{{this.id}}">
+      <span>{{this.todo}}</span>
+    </li>
+    {{/each}}
+  </ul>
+</script>-->
+</body>
+</html>
