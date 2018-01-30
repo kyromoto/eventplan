@@ -1,0 +1,7 @@
+div.eventplan-page-wrapper {
+  display: none;
+}
+
+div.eventplan-page-wrapper.active {
+  display: block;
+}

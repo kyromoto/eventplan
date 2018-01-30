@@ -11,10 +11,13 @@ var stateConfig = {}
 var updateGui = function(name) {
   var pageName = name.replace('.', '-');
   console.log("current: " + pageName);
-  $('.page-wrapper').removeClass('active');
+  /* Toggle active page */
+  $('.eventplan-page-wrapper').removeClass('active');
   $('#page-' + pageName).addClass('active');
-  $('.nav.nav-tabs li.nav-item a.nav-link').removeClass('active');
-  $('.nav.nav-tabs li.nav-item a.nav-link.' + pageName).addClass('active');
+
+
+  $('.eventplan-navpoint').removeClass('active');
+  $('.eventplan-navpoint.navpoint-' + pageName).addClass('active');
 }
 
 var states = {
