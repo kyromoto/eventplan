@@ -1,6 +1,6 @@
 const User = require('./User.Model');
 
-exports.userList = (req, res) => {
+exports.listUsers = (req, res) => {
     User.find((err, users) => {
         if(err) {
             console.log(err);
@@ -10,7 +10,7 @@ exports.userList = (req, res) => {
     });
 }
 
-exports.userDetails = (req, res) => {
+exports.getUser = (req, res) => {
     User.findById(req.params.id, (err, user) => {
         if(err) {
             console.error(err);
@@ -20,7 +20,7 @@ exports.userDetails = (req, res) => {
     });
 }
 
-exports.userCreate = (req, res) => {
+exports.postUser = (req, res) => {
     let newUser = new User(req.body);
 
     newUser.save((err, user) => {
@@ -29,14 +29,14 @@ exports.userCreate = (req, res) => {
     });
 }
 
-exports.userUpdate = (req, res) => {
+exports.updateUser = (req, res) => {
     User.findOneAndUpdate(req.params.id, req.body, (err, user) => {
         if(err) return res.status(400).json(err);
         return res.json(user);
     });
 }
 
-exports.userDelete = (req, res) => {
+exports.deleteUser = (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, user) => {
         if(err) return res.status(400).json(err);
         return res.json(user);

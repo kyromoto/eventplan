@@ -24,11 +24,13 @@ db.once('close', () => {
     console.log('DB disconnected');
 });
 
-console.log('Try to connect to %s as %s ...', DB_URL, DB_USER);
-mongoose.connect(DB_URL, {
-    useNewUrlParser: true,
-    user : DB_USER,
-    pass : DB_PASS
-});
+exports.initDB = (callback) => {
+    if(callback) db.once('open', () => callback());
 
-module.exports = mongoose;
+    console.log('Try to connect to %s as %s ...', DB_URL, DB_USER);
+    mongoose.connect(DB_URL, {
+        useNewUrlParser: true,
+        user : DB_USER,
+        pass : DB_PASS
+    });
+}

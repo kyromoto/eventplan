@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node -r dotenv/config app.js",
     "dev": "node ./node_modules/nodemon/bin/nodemon.js --inspect --exec \"npm run start\"",
-    "test": "node ./node_modules/mocha/bin/mocha --timeout 10000"
+    "test": "node ./node_modules/mocha/bin/mocha \"./{,!(node_modules)/**/}*.test.js\" --timeout 10000 --exit"
   },
   "author": "Kyromoto",
   "license": "ISC",
