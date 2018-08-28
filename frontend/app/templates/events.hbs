@@ -1,0 +1,22 @@
+<h2>Events</h2>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Info</th>
+  </tr>
+  {{#each model key="id" as |event|}}
+    <tr>
+      <td>{{event.id}}</td>
+      <td>{{event.name}}</td>
+      <td>{{event.start_date}}</td>
+      <td>{{event.stop_date}}</td>
+      <td>{{event.info}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+{{outlet}}

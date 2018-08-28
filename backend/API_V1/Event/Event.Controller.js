@@ -8,9 +8,15 @@ exports.listEvents = (req, res) => {
         }
 
         //if list has no entrys => set status to NoContent(204)
-        if(events.length == 0) return res.status(204).json(events);
+        if(events.length == 0) return res.status(204).json({
+            "data" : {
+                "events" : events
+            }
+        });
 
-        return res.json(events);
+        return res.json({
+            "data" : events
+        });
     });
 }
 
@@ -20,7 +26,7 @@ exports.getEvent = (req, res) => {
             console.error(err);
             return res.status(400).json(err);
         }
-        return res.json(event);
+        return res.json({ "events" : event});
     });
 }
 

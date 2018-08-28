@@ -7,13 +7,14 @@ const userSchema = new mongoose.Schema({
     name : { type : String, required : true}
 });
 
-/*userSchema.pre('save', (next) => {
-    var self = this;
-    User.find({ username : self.username }, (err, users) => {
-        if(!users.length) next();
-        else next(new Error('username already exists'));
-    });
-});*/
+userSchema.virtual('type').get(() => {
+    return 'users';
+});
+
+userSchema.set('toJSON', {
+   virtuals : false
+});
+
 
 const User = mongoose.model('user', userSchema);
 

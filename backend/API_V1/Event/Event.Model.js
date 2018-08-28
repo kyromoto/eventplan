@@ -8,6 +8,14 @@ const eventSchema = new mongoose.Schema({
     info : { type : String }
 });
 
+eventSchema.virtual('type').get(() => {
+    return 'events';
+});
+
+eventSchema.set('toJSON', {
+   virtuals : false
+});
+
 const Event = mongoose.model('event', eventSchema);
 
 module.exports = Event;
