@@ -10,8 +10,5 @@ Router.route('/user/:id')
     .get(userController.getUser)
     .put(userController.updateUser)
     .delete(userController.deleteUser);
-
-Router.route('/user/test')
-    .get((req, res) => res.json({status : 'OK'}));
-
+    
 module.exports = Router;

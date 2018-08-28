@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 const User = require('./User.Model');
 
 exports.listUsers = (req, res) => {
@@ -6,6 +9,10 @@ exports.listUsers = (req, res) => {
             console.log(err);
             return res.status(400).json();
         }
+
+        //if list has no entrys => set status to NoContent(204)
+        if(users.length == 0) return res.status(204).json(users);
+
         return res.json(users);
     });
 }
@@ -16,17 +23,34 @@ exports.getUser = (req, res) => {
             console.error(err);
             return res.status(400).json(err);
         }
+
         return res.json(user);
     });
 }
 
 exports.postUser = (req, res) => {
-    let newUser = new User(req.body);
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if(err) {
+            return res.status(500).json({
+                error : err
+            });
+        } else {
+            let newUser = new User({
+                username : req.body.username,
+                password : hash,
+                name : req.body.name
+            });
 
-    newUser.save((err, user) => {
-        if(err) return res.status(400).json(err);
-        return res.json(user);
-    });
+            newUser.save((err, user) => {
+                if(err) return res.status(400).json(err);
+                return res.json({
+                    _id : user._id,
+                    username : user.username,
+                    name : user.name
+                });
+            });
+        }
+    });   
 }
 
 exports.updateUser = (req, res) => {

@@ -6,6 +6,10 @@ exports.listEvents = (req, res) => {
             console.error(err);
             return res.status(400).json(err);
         }
+
+        //if list has no entrys => set status to NoContent(204)
+        if(events.length == 0) return res.status(204).json(events);
+
         return res.json(events);
     });
 }

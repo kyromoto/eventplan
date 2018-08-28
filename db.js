@@ -12,7 +12,10 @@ let db = mongoose.connection;
 process.on('exit', () => mongoose.disconnect());
 
 //mogoose error
-db.on('error', console.error.bind(console, 'mongoose-db error:\n'));
+db.on('error', () => {
+    console.error.bind(console, 'mongoose-db error:\n');
+    process.exit(1);
+});
 
 //mongoose connected
 db.once('open', () => {
